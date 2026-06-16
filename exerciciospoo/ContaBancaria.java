@@ -2,13 +2,29 @@ package exerciciospoo;
 
 public class ContaBancaria {
     private double saldo;
-    private double chequeEspecial = 0;
+    private double chequeEspecial;
+    private double limiteTotal = saldo + chequeEspecial;
 
     public ContaBancaria(double saldo) {
         this.saldo = saldo;
+        cheque();
     }
 
-    public double getSaldo() {
+    public double cheque(){
+        if (this.saldo <= 500){
+            this.chequeEspecial = + 50;
+        }else{
+            this.chequeEspecial = + (this.saldo * 0.5);
+        }
+        return chequeEspecial;
+    }
+
+    public void sacar(double valor) {
+        saldo -= valor;
+    }
+
+    public double getSaldo()
+    {
         return saldo;
     }
 
@@ -21,10 +37,14 @@ public class ContaBancaria {
     }
 
     public void setChequeEspecial(double chequeEspecial) {
-        if (this.saldo <= 500){
-            this.chequeEspecial = chequeEspecial + 50;
-        }else{
-            this.chequeEspecial = chequeEspecial + (this.saldo * 0.5);
-        }
+        this.chequeEspecial = chequeEspecial;
+    }
+
+    public double getLimiteTotal() {
+        return  saldo + chequeEspecial;
+    }
+
+    public void setLimiteTotal(double limiteTotal) {
+        this.limiteTotal = limiteTotal;
     }
 }
