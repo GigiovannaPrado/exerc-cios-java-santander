@@ -38,4 +38,10 @@ public abstract class GenericDAO<T> {
         return db.size();
     }
 
+    @Override
+    public String toString() {
+        return "GenericDAO{" +
+                "db=" + db +
+                '}';
+    }
 }
